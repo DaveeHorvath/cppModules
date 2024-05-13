@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include <exception>
 #include <iostream>
 Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name)
 {
@@ -36,6 +37,31 @@ void Bureaucrat::decrementGrade()
 {
 	if (++grade > 150)
 		throw new Bureaucrat::GradeTooLowException();
+}
+
+void Bureaucrat::singForm(AForm form)
+{
+	try
+	{
+		form.beSigned(*this);	
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what();
+	}
+}
+
+void Bureaucrat::executeFrom(AForm form)
+{
+	
+	try
+	{
+		form.execute(*this);	
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what();
+	}
 }
 
 const char * Bureaucrat::GradeTooHighException::what() const noexcept

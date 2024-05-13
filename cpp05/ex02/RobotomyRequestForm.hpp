@@ -1,6 +1,6 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
-#include "AFrom.hpp"
+#include "AForm.hpp"
 class RobotomyRequestForm : public AForm
 {
 	private:
@@ -13,7 +13,7 @@ class RobotomyRequestForm : public AForm
 		~RobotomyRequestForm() = default;
 		RobotomyRequestForm& operator=(RobotomyRequestForm& other) = default;
 
-		void executeForm(Bureaucrat const & executor) override;
+		void execute(Bureaucrat const & executor) override;
 };
 
 #endif

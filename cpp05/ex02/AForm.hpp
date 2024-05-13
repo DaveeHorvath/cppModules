@@ -17,7 +17,7 @@ class AForm {
 		AForm(const AForm& other) = default;
 		AForm& operator=(AForm& other);
 		void beSigned(Bureaucrat b);
-		virtual void executeForm(Bureaucrat const & executor);
+		virtual void execute(Bureaucrat const & executor);
 		std::string getName() const;
 		int getSignGrade() const;
 		int getExecuteGrade() const;

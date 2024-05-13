@@ -1,6 +1,6 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
 #define PRESIDENTIALPARDONFORM_HPP
-#include "AFrom.hpp"
+#include "AForm.hpp"
 class PresidentialPardonForm : public AForm
 {
 	private:
@@ -13,7 +13,7 @@ class PresidentialPardonForm : public AForm
 		~PresidentialPardonForm() = default;
 		PresidentialPardonForm& operator=(PresidentialPardonForm& other) = default;
 
-		void executeForm(Bureaucrat const & executor) override;
+		void execute(Bureaucrat const & executor) override;
 };
 
 #endif

@@ -1,6 +1,6 @@
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
-#include "AFrom.hpp"
+#include "AForm.hpp"
 class ShrubberyCreationForm : public AForm
 {
 	private:
@@ -13,7 +13,7 @@ class ShrubberyCreationForm : public AForm
 		~ShrubberyCreationForm() = default;
 		ShrubberyCreationForm& operator=(ShrubberyCreationForm& other) = default;
 
-		void executeForm(Bureaucrat const & executor) override;
+		void execute(Bureaucrat const & executor) override;
 };
 
 #endif
