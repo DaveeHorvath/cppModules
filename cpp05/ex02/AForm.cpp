@@ -17,6 +17,15 @@ void AForm::beSigned(Bureaucrat b)
 	isSigned = true;
 }
 
+void AForm::execute(Bureaucrat const& executor)
+{
+	if (executor.getGrade() < requiredToSign)
+	{
+		std::cout << "failed to execute " << getName() << " by " << executor.getName() << "since grade is too low \n";
+		throw new GradeTooLowException();
+	}
+}
+
 const char * AForm::GradeTooLowException::what() const noexcept
 {
 	return "AForm grade too low";

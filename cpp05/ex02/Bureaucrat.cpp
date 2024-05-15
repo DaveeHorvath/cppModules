@@ -39,7 +39,7 @@ void Bureaucrat::decrementGrade()
 		throw new Bureaucrat::GradeTooLowException();
 }
 
-void Bureaucrat::singForm(AForm form)
+void Bureaucrat::singForm(AForm form) const
 {
 	try
 	{
@@ -51,9 +51,8 @@ void Bureaucrat::singForm(AForm form)
 	}
 }
 
-void Bureaucrat::executeFrom(AForm form)
-{
-	
+void Bureaucrat::executeFrom(AForm form) const
+{	
 	try
 	{
 		form.execute(*this);	
