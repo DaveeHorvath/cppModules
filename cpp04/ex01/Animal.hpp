@@ -12,8 +12,6 @@ class Animal
 		Animal& operator=(Animal&a);
 		virtual void makeSound() const;
 		std::string getType() const;
-		void setIdea(int i, std::string s);
-		std::string& getIdea(int i);
 };
 
 #endif

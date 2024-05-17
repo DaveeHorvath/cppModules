@@ -1,7 +1,7 @@
 #include "Dog.hpp"
 #include <iostream>
 
-Dog::Dog() : Animal()
+Dog::Dog() : AAnimal()
 {
 	type = "Dog";
 	brain = new Brain();

@@ -2,8 +2,8 @@
 #define DOG_HPP
 
 #include "Brain.hpp"
-#include "Animal.hpp"
-class Dog : public Animal
+#include "AAnimal.hpp"
+class Dog : public AAnimal
 {
 	private:
 		Brain* brain;

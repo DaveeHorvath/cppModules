@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 #include <iostream>
-Cat::Cat() : Animal()
+Cat::Cat() : AAnimal()
 {
 	type = "Cat";
 	brain = new Brain();

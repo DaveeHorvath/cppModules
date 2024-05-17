@@ -17,7 +17,6 @@ Animal::Animal(Animal& a)
 Animal& Animal::operator=(Animal& a)
 {
 	type = a.type;
-	brain = a.brain;
 	return *this;
 }
 
