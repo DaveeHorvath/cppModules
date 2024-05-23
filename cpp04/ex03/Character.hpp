@@ -5,8 +5,10 @@ class Character : public ICharacter
 {
 	private:
 		const std::string name;
+		AMateria *slots[4];
 	public:
-		Character();
+		Character() = delete;
+		Character(const std::string _name);
 		Character(const Character &copy);
 		Character &operator=(const Character &copy);
 		~Character();
