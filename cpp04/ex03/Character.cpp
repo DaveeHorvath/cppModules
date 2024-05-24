@@ -4,6 +4,7 @@
 
 Character::Character(const std::string _name) : name(_name) {
 	std::cout << "Character constructor called\n";	
+	dropped = new LinkedList<AMateria *>(nullptr);
 	for (int i = 0; i < 4; i++)
 		slots[i] = nullptr;
 }
@@ -19,7 +20,17 @@ Character& Character::operator=(const Character& copy){
 		slots[i] = copy.slots[i];
 	return *this;
 }
+
 Character::~Character(){
+	LinkedList<AMateria *> *tmp;
+	while (dropped)
+	{
+		tmp = dropped;
+		if (dropped->getValue() != nullptr)
+			delete dropped->getValue();
+		delete dropped;
+		dropped = tmp->next;
+	}
 }
 
 std::string const& Character::getName() const {
@@ -37,6 +48,7 @@ void Character::equip(AMateria* m) {
 void Character::unequip(int idx){
 	if (0 <= idx && idx < 4)
 	{
+		dropped->append(slots[idx]);	
 		slots[idx] = nullptr;
 	}
 }

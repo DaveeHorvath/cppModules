@@ -1,11 +1,13 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 #include "ICharacter.hpp"
+#include "LinkedList.hpp"
 class Character : public ICharacter
 {
 	private:
 		const std::string name;
 		AMateria *slots[4];
+		LinkedList<AMateria *> *dropped;
 	public:
 		Character() = delete;
 		Character(const std::string _name);
