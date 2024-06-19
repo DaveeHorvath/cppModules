@@ -7,12 +7,14 @@ void testException(int grade, int increments, int testnumber)
 	try
 	{
 		Bureaucrat dumb("dumb", grade);
-		for (int i = increments; i > 0; i--) {
+		for (int i = increments; i < 0; i--) {
 			std::cout << dumb;
+			std::cout << ">decrement\n";
 			dumb.decrementGrade();
 		}
-		for (int i = increments; i < 0; i++) {
+		for (int i = increments; i > 0; i++) {
 			std::cout << dumb;
+			std::cout << ">increment\n";
 			dumb.incrementGrade();
 		}
 	}
@@ -24,6 +26,21 @@ void testException(int grade, int increments, int testnumber)
 
 int main()
 {
+	try
+	{
+		Bureaucrat a("a", 1);
+		Bureaucrat b(a);
+		Bureaucrat c("c", 1);
+		c = a;
+
+		std::cout << a;
+		std::cout << b;
+		std::cout << c;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what();
+	}
 	testException(0, 0, 0); // test 0
 	testException(-1, 0, 1);// test 1
 	testException(151, 0, 2);// test 2

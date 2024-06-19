@@ -1,5 +1,5 @@
 NAME = bureaucrat 
-FLAGS = -Wall -Wextra -Werror -std=c++14 -fsanitize=address,undefined
+FLAGS = -Wall -Wextra -Werror -std=c++14 -g
 
 SRC = $(wildcard *.cpp) 
 OBJ = $(SRC:.cpp=.o)

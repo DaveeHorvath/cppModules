@@ -1,60 +1,69 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-void testException(int grade, int increments, int testnumber)
-{
-	std::cout << testnumber << ".test\n";
-	try
-	{
-		Bureaucrat dumb("dumb", grade);
-		for (int i = increments; i > 0; i--) {
-			std::cout << dumb;
-			dumb.decrementGrade();
-		}
-		for (int i = increments; i < 0; i++) {
-			std::cout << dumb;
-			dumb.incrementGrade();
-		}
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what();
-	}
-}
-
 int main()
 {
+	Bureaucrat b = Bureaucrat("bob", 1);
+	// test 1
 	try
 	{
-		Bureaucrat a("a", 1);
-		Bureaucrat b(a);
-		Bureaucrat c("c", 1);
-		c = a;
-
-		std::cout << a;
-		std::cout << b;
-		std::cout << c;
-	}
+		Form f = Form("job application", 0, 5);
+	}	
 	catch (std::exception& e)
 	{
-		std::cout << e.what();
+		std::cout << e.what() << "\n";
 	}
-
+	// test 2
 	try
 	{
-		testException(0, 0, 0); // test 0
-		testException(-1, 0, 1);// test 1
-		testException(151, 0, 2);// test 2
-		testException(152, 0, 3);// test 3
-		testException(1, 1, 4);// test 4
-		testException(2, 2, 5);// test 5
-		testException(150, -1, 6);// test 6
-		testException(149, -2, 7);// test 7
-		testException(1, -150, 8);// test 8
-		testException(150, 150, 9);// test 9
-	}
+		Form f = Form("job application", 5, 0);
+	}	
 	catch (std::exception& e)
 	{
-		std::cout << e.what();
+		std::cout << e.what() << "\n";
 	}
+
+	// test 3
+	try
+	{
+		Form f = Form("job application", 151, 1);
+	}	
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << "\n";
+	}
+	// test 4
+	try
+	{
+		Form f = Form("job application", 1, 151);
+	}	
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << "\n";
+	}
+
+	Form toSign{"to sign", 5, 5};
+	toSign.beSigned(b);
+
+	Bureaucrat weakBob{"Weak bob", 150};
+	try
+	{
+		Form cantSign{"cant sign", 5, 5};
+		cantSign.beSigned(weakBob);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Form alsoCantSign{"also cant sign", 150, 5};
+		alsoCantSign.beSigned(weakBob);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+
 }

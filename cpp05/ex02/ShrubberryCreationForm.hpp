@@ -13,7 +13,7 @@ class ShrubberyCreationForm : public AForm
 		~ShrubberyCreationForm() = default;
 		ShrubberyCreationForm& operator=(ShrubberyCreationForm& other) = default;
 
-		void execute(Bureaucrat const & executor) override;
+		void execute(Bureaucrat const & executor) const override;
 };
 
 #endif

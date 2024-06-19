@@ -4,17 +4,18 @@
 Form::Form(std::string _name, int _toSign, int _toExecute) : name(_name), requiredToSign(_toSign), requiredToExecute(_toExecute)
 {
 	if (_toSign > 150 || _toExecute > 150)
-		throw new GradeTooHighException();
+		throw GradeTooHighException();
 	if (_toSign < 1 || _toExecute < 1)
-		throw new GradeTooLowException();
+		throw GradeTooLowException();
 	isSigned = false;
 }
 
 void Form::beSigned(Bureaucrat b)
 {
-	if (b.getGrade() < requiredToSign)
-		throw new GradeTooLowException();
+	if (b.getGrade() > requiredToSign)
+		throw GradeTooLowException();
 	isSigned = true;
+	std::cout << "Form got signed by " << b;
 }
 
 const char * Form::GradeTooLowException::what() const noexcept

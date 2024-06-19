@@ -17,16 +17,21 @@ class AForm {
 		AForm(const AForm& other) = default;
 		AForm& operator=(AForm& other);
 		void beSigned(Bureaucrat b);
-		virtual void execute(Bureaucrat const & executor);
+		virtual void execute(Bureaucrat const & executor) const;
 		std::string getName() const;
 		int getSignGrade() const;
 		int getExecuteGrade() const;
 		bool getIsSigned() const;
+		void setSigned() const;
 		class GradeTooHighException : public std::exception
 		{
 			const char * what() const noexcept;
 		};
 		class GradeTooLowException : public std::exception
+		{
+			const char * what() const noexcept;
+		};
+		class NotSignedException : public std::exception
 		{
 			const char * what() const noexcept;
 		};

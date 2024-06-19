@@ -13,7 +13,7 @@ class PresidentialPardonForm : public AForm
 		~PresidentialPardonForm() = default;
 		PresidentialPardonForm& operator=(PresidentialPardonForm& other) = default;
 
-		void execute(Bureaucrat const & executor) override;
+		void execute(Bureaucrat const & executor) const override;
 };
 
 #endif

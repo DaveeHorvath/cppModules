@@ -3,10 +3,10 @@
 #include <iostream>
 Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name)
 {
-	if (grade > 150)
-		throw new Bureaucrat::GradeTooLowException();
-	if (grade < 1)
-		throw new Bureaucrat::GradeTooHighException(); 
+	if (_grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	if (_grade < 1)
+		throw Bureaucrat::GradeTooHighException(); 
 	grade = _grade;
 }	
 Bureaucrat::~Bureaucrat()
@@ -29,37 +29,39 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::incrementGrade()
 {
-	if (--grade < 1)
-		throw new Bureaucrat::GradeTooHighException();
+	if (grade - 1 < 1)
+		throw Bureaucrat::GradeTooHighException();
+	grade--;
 }
 
 void Bureaucrat::decrementGrade() 
 {
-	if (++grade > 150)
-		throw new Bureaucrat::GradeTooLowException();
+	if (grade + 1 > 150)
+		throw Bureaucrat::GradeTooLowException();
+	grade++;
 }
 
-void Bureaucrat::singForm(AForm form) const
+void Bureaucrat::singForm(AForm& form) const
 {
 	try
 	{
-		form.beSigned(*this);	
+		form.beSigned(*this);
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what();
+		std::cout << e.what() << "\n";
 	}
 }
 
-void Bureaucrat::executeFrom(AForm form) const
+void Bureaucrat::executeFrom(const AForm& form) const
 {	
 	try
 	{
-		form.execute(*this);	
+		form.execute(*this);
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what();
+		std::cout << e.what() << "\n";
 	}
 }
 
