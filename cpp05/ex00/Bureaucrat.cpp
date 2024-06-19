@@ -3,15 +3,14 @@
 Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name)
 {
 	if (grade > 150)
-		throw new Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	if (grade < 1)
-		throw new Bureaucrat::GradeTooHighException(); 
+		throw GradeTooHighException(); 
 	grade = _grade;
 }	
-Bureaucrat::~Bureaucrat()
-{
-	
-}
+
+Bureaucrat::~Bureaucrat() {}
+
 Bureaucrat& Bureaucrat::operator=(Bureaucrat& other)
 {
 	grade = other.getGrade();
@@ -31,13 +30,13 @@ int Bureaucrat::getGrade() const
 void Bureaucrat::incrementGrade()
 {
 	if (--grade < 1)
-		throw new Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 }
 
 void Bureaucrat::decrementGrade() 
 {
 	if (++grade > 150)
-		throw new Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 }
 
 const char * Bureaucrat::GradeTooHighException::what() const noexcept

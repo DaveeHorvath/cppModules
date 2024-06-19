@@ -1,5 +1,5 @@
 NAME = bureaucrat 
-FLAGS = -Wall -Wextra -Werror -std=c++14 -fsanitize=address,undefined
+FLAGS = -Wall -Wextra -Werror -std=c++11
 
 SRC = $(wildcard *.cpp) 
 OBJ = $(SRC:.cpp=.o)
@@ -22,4 +22,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY = all clean fclean re
+.PHONY: all clean fclean re
