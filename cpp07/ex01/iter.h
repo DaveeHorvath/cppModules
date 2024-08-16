@@ -9,18 +9,18 @@ void iter(T* array, int len, F f){
         f(array[i]);
 };
 
-template<typename T>
-concept incrementable = requires(T x) {x++;};
+// template<typename T>
+// concept incrementable = requires(T x) {x++;};
+
+// template<typename T>
+// concept printable = requires(T x) {std::cout << x;};
 
 template<typename T>
-concept printable = requires(T x) {std::cout << x;};
-
-template<incrementable T>
 void f1(T& t){
     t++;
 }
 
-template<printable T>
+template<typename T>
 void f2(T& t){
     std::cout << t;
 }
