@@ -20,6 +20,12 @@ class Span{
     void addNumber(int n);
     int shortestSpan();
     int longestSpan();
+    template <typename T>
+    void addRange(T begin, T end)
+    {
+        while (begin != end)
+            addNumber(*begin++);
+    }
 
     class SizeReachedException : public std::exception {
         const char* what() const noexcept;
