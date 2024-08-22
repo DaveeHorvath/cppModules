@@ -1,5 +1,6 @@
 #include "Span.hpp"
-
+#include <cstdlib>
+#include <ctime>
 int main(){
     {
         Span sp = Span(5);
@@ -64,5 +65,21 @@ int main(){
 
     std::cout << "longest: " << s.longestSpan() << "\n";
     std::cout << "shortest: " << s.shortestSpan() << "\n";
+
+    Span span(10000);
+    std::srand(std::time(NULL));
+    std::list<int> input(10001);
+    std::for_each(input.begin(), input.end(), [](int &n) {n = std::rand();});
+    try
+    {
+        span.addRange(input.begin(), input.end());
+    }
+    catch (const std::exception& e)
+    {    
+        std::cerr << e.what() << "\n";
+    }
+    std::cout << "longest: " << span.longestSpan() << "\n";
+    std::cout << "shortest: " << span.shortestSpan() << "\n";
+
     return 0;
 }
