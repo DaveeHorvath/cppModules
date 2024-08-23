@@ -1,9 +1,9 @@
 #include "Span.hpp"
-
+#include <limits>
 Span::Span(unsigned int N) : size(N)
 {
     numbers = std::list<int>();
-    min = UINT32_MAX;
+    min = std::numeric_limits<int>::max();
 }
 
 Span::Span(const Span& other)

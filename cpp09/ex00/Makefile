@@ -1,4 +1,4 @@
-NAME = span 
+NAME = btc 
 FLAGS = -Wall -Wextra -Werror -std=c++20
 
 SRC = $(wildcard *.cpp) 
