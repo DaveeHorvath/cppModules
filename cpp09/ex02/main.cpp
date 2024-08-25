@@ -1,12 +1,30 @@
 #include "Pmerge.hpp"
 #include <list>
-#include <vector>
 #include <iostream>
-int main()
+#include <deque>
+int main(int argc, char **argv)
 {
-    std::string s = "1 5 2 3 4";
-    std::cout << "List: ";
-    Pmerge<std::list> l{s};
-    std::cout << "Vector: ";
-    Pmerge<std::vector> v{s};
+    if (argc != 2)
+    {
+        std::cout << "Usage: ./Pmerge \"list of numbers\"\n";
+        return 1;
+    }
+    std::string s{argv[1]};
+    try{
+        std::cout << "List: \n";
+        Pmerge<std::list> l{s};
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "Error: " << e.what() << "\n";
+    }
+
+    try{
+        std::cout << "Deque: \n";
+        Pmerge<std::deque> v{s};
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "Error: " << e.what() << "\n";
+    }
 }
